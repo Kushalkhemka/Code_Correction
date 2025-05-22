@@ -1,5 +1,5 @@
-# make classes for extra classes and then just parse them in
-# make version for proper programs
+# make classes for extra class# make version for proper programs
+es and then just parse them in
 
 import copy
 import json
@@ -7,11 +7,12 @@ import sys
 import subprocess
 import types
 
-def py_try(algo, *args, correct=False):
-    if not correct:
+def py_try(algo, *args, correct=False,fixed=False):
+    if not fixed:
         module = __import__("python_programs."+algo)
     else:
-        module = __import__("correct_python_programs."+algo)
+        if not correct: module = __import__("fixed_programs."+algo)
+        else: module = __import__("correct_python_programs."+algo)
 
     fx = getattr(module, algo)
 
@@ -57,17 +58,6 @@ if __name__ == "__main__":
             print(sys.exc_info())
         print()
 
-        print("Bad Java:")
-        try:
-            p1 = subprocess.Popen(["/usr/bin/java", "java_programs/"+algo.upper()+"_TEST"], stdout=subprocess.PIPE,
-                    universal_newlines=True)
-            java_out = p1.stdout.read()
-            print(type(java_out))
-            print(prettyprint(java_out))
-        except:
-            print(prettyprint(sys.exc_info()))
-
-
     else:
         working_file = open("json_testcases/"+algo+".json", 'r')
 
@@ -89,14 +79,5 @@ if __name__ == "__main__":
             py_out_test = py_try(algo, *copy.deepcopy(test_in))
             print("Bad Python: " + prettyprint(py_out_test))
 
-            # check bad Java version
-            try:
-                p1 = subprocess.Popen(["/usr/bin/java", "JavaDeserialization", algo]+ \
-                                    [json.dumps(arg) for arg in copy.deepcopy(test_in)], stdout=subprocess.PIPE,
-                                    universal_newlines=True)
-                java_out = p1.stdout.read()
-                print("Bad Java:   " + prettyprint(java_out))
-            except:
-                print("Bad Java:   " + prettyprint(sys.exc_info()))
-
-            print()
+            py_out_fixed = py_try(algo, *copy.deepcopy(test_in), fixed=True)
+            print("Fixed Python: " + prettyprint(py_out_fixed))
