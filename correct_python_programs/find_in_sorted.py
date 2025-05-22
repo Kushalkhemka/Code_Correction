@@ -10,5 +10,5 @@ def find_in_sorted(arr, x):
             return binsearch(mid + 1, end)
         else:
             return mid
-
+ 
     return binsearch(0, len(arr))

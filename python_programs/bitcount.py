@@ -6,7 +6,7 @@ def bitcount(n):
         count += 1
     return count
 
-
+ 
 """
 Bitcount
 bitcount

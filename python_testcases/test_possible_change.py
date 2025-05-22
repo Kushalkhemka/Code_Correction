@@ -9,7 +9,7 @@ else:
 
 testdata = load_json_testcases(possible_change.__name__)
 
-
+ 
 @pytest.mark.parametrize("input_data,expected", testdata)
 def test_possible_change(input_data, expected):
     assert possible_change(*input_data) == expected

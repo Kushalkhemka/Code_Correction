@@ -12,7 +12,7 @@ def main():
     five = Node(5)
     seven = Node(7)
     three = Node(3)
-    eleven = Node(11)
+    eleven = Node(11) 
     eight = Node(8)
     two = Node(2)
     nine = Node(9)

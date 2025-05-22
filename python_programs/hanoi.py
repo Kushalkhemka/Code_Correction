@@ -12,7 +12,7 @@ def hanoi(height, start=1, end=3):
 """
 Towers of Hanoi
 hanoi
-
+ 
 
 An algorithm for solving the Towers of Hanoi puzzle.  Three pegs exist, with a stack of differently-sized
 disks beginning on one peg, ordered from smallest on top to largest on bottom.  The goal is to move the

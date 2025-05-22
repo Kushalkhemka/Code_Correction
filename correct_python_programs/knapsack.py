@@ -14,6 +14,6 @@ def knapsack(capacity, items):
                     memo[i, j],
                     value + memo[i - 1, j - weight]
                 )
-
+ 
     return memo[len(items), capacity]
 

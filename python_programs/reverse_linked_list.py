@@ -14,7 +14,7 @@ Reverses a linked list and returns the new head.
 
 Input:
     node: The head of a singly-linked list
-
+ 
 Precondition:
     The input is acyclic
 

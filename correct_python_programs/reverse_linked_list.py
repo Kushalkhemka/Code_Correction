@@ -7,7 +7,7 @@ def reverse_linked_list(node):
         prevnode = node
         node = nextnode
     return prevnode
-
+ 
 """
 def reverse_linked_list(node):
     prevnode = None

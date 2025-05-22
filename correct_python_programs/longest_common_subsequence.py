@@ -11,5 +11,5 @@ def longest_common_subsequence(a, b):
             longest_common_subsequence(a, b[1:]),
             longest_common_subsequence(a[1:], b),
             key=len
-        )
+        ) 
 

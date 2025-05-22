@@ -2,7 +2,7 @@
 def find_first_in_sorted(arr, x):
     lo = 0
     hi = len(arr)
-
+ 
     while lo < hi:
         mid = (lo + hi) // 2
 

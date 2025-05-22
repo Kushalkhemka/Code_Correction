@@ -4,7 +4,7 @@ def shortest_path_length(length_by_edge, startnode, goalnode):
     unvisited_nodes = [] # FibHeap containing (node, distance) pairs
     heappush(unvisited_nodes, (0, startnode))
     visited_nodes = set()
-
+ 
     while len(unvisited_nodes) > 0:
         distance, node = heappop(unvisited_nodes)
         if node is goalnode:

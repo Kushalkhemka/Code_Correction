@@ -9,7 +9,7 @@ def next_permutation(perm):
                     next_perm[i + 1:] = reversed(next_perm[i + 1:])
                     return next_perm
 
-"""
+""" 
 def next_permutation(perm):
     for i in range(len(perm) - 2, -1, -1):
         if perm[i] < perm[i + 1]:

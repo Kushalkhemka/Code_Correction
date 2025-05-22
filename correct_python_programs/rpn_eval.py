@@ -11,7 +11,7 @@ def rpn_eval(tokens):
     stack = []
 
     for token in tokens:
-        if isinstance(token, float):
+        if isinstance(token, float): 
             stack.append(token)
         else:
             a = stack.pop()

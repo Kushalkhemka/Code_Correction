@@ -15,7 +15,7 @@ def pascal(n):
 """
 Pascal's Triangle
 pascal
-
+ 
 
 
 Input:

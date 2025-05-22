@@ -16,7 +16,7 @@ Input:
 
 Precondition:
     arr has no duplicate elements
-
+ 
 Output:
     A list of lists, each representing a different subset of arr. The empty set is always a subset of arr, and arr is always a subset of arr.
 

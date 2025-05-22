@@ -17,7 +17,7 @@ def main():
     two = Node(2)
     nine = Node(9)
     ten = Node(10)
-
+ 
     five.outgoing_nodes = [eleven]
     seven.outgoing_nodes = [eleven, eight]
     three.outgoing_nodes = [eight, ten]

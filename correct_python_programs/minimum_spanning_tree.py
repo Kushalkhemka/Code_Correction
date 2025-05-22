@@ -11,5 +11,5 @@ def minimum_spanning_tree(weight_by_edge):
             for node in group_by_node[v]:
                 group_by_node[node] = group_by_node[u]
 
-    return mst_edges
+    return mst_edges 
 

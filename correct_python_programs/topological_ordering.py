@@ -6,4 +6,4 @@ def topological_ordering(nodes):
             if set(ordered_nodes).issuperset(nextnode.incoming_nodes) and nextnode not in ordered_nodes:
                 ordered_nodes.append(nextnode)
 
-    return ordered_nodes
+    return ordered_nodes 

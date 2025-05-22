@@ -8,7 +8,7 @@ def main():
     # Case 1: Basic graph input.
     # Output:
     graph = {
-        (0, 2): 3,
+        (0, 2): 3, 
         (0, 5): 5,
         (2, 1): -2,
         (2, 3): 7,

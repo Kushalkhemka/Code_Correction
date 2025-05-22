@@ -16,7 +16,7 @@ def knapsack(capacity, items):
                 )
 
     return memo[len(items), capacity]
-
+ 
 """
 Knapsack
 knapsack

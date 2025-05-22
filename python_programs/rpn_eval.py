@@ -9,7 +9,7 @@ def rpn_eval(tokens):
         }[symbol](a, b)
 
     stack = []
-
+ 
     for token in tokens:
         if isinstance(token, float):
             stack.append(token)

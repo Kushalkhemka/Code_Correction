@@ -15,7 +15,7 @@ def possible_change(coins, total):
     if not coins or total < 0:
         return 0
 
-    first, *rest = coins
+    first, *rest = coins 
     return possible_change(coins, total - first) + possible_change(rest, total)
 
 def possible_change(coins, total):

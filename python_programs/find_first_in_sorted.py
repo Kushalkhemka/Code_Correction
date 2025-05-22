@@ -16,7 +16,7 @@ def find_first_in_sorted(arr, x):
 
     return -1
 
-
+ 
 """
 Fancy Binary Search
 fancy-binsearch

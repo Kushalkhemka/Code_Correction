@@ -5,7 +5,7 @@ if pytest.use_correct:
     from correct_python_programs.detect_cycle import detect_cycle
 else:
     from python_programs.detect_cycle import detect_cycle
-
+ 
 
 node1 = Node(1)
 node2 = Node(2, node1)

@@ -3,7 +3,7 @@ from .shortest_paths import shortest_paths
 
 """
 Test shortest paths
-"""
+""" 
 def main():
     # Case 1: Graph with multiple paths
     # Output: {'A': 0, 'C': 3, 'B': 1, 'E': 5, 'D': 10, 'F': 4}

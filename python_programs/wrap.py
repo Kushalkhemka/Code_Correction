@@ -9,7 +9,7 @@ def wrap(text, cols):
 
     return lines
 
-"""
+""" 
 Wrap Text
 
 Given a long string and a column width, break the string on spaces into a list of lines such that each line is no longer than the column width.

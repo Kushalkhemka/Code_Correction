@@ -24,7 +24,7 @@ def main():
         print(result.value, end=" ")
         result = result.successor
     print()
-
+ 
     # Case 2: 1-node list input
     # Expected Output: 0
     node = Node(0)

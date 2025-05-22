@@ -8,7 +8,7 @@ else:
 
 
 testdata = load_json_testcases(levenshtein.__name__)
-
+ 
 
 @pytest.mark.parametrize("input_data,expected", testdata)
 def test_levenshtein(input_data, expected):

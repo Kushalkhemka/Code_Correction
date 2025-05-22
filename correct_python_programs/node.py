@@ -10,7 +10,7 @@ class Node:
     def successor(self):
         return self.successor
 
-    def successors(self):
+    def successors(self): 
         return self.successors
 
     def predecessors(self):

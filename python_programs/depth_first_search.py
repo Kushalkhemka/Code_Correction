@@ -1,6 +1,6 @@
 def depth_first_search(startnode, goalnode):
     nodesvisited = set()
-
+ 
     def search_from(node):
         if node in nodesvisited:
             return False

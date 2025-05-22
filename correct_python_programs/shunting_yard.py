@@ -11,7 +11,7 @@ def shunting_yard(tokens):
     opstack = []
     for token in tokens:
         if isinstance(token, int):
-            rpntokens.append(token)
+            rpntokens.append(token) 
         else:
             while opstack and precedence[token] <= precedence[opstack[-1]]:
                 rpntokens.append(opstack.pop())

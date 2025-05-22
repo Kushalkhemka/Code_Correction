@@ -8,7 +8,7 @@ else:
 
 
 testdata = load_json_testcases(rpn_eval.__name__)
-
+ 
 
 @pytest.mark.parametrize("input_data,expected", testdata)
 def test_rpn_eval(input_data, expected):

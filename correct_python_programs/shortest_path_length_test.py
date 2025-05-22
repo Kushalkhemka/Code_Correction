@@ -6,7 +6,7 @@ from .shortest_path_length import shortest_path_length
 """
 Test shortest path length
 """
-def main():
+def main(): 
 
     node1 = Node("1")
     node5 = Node("5")

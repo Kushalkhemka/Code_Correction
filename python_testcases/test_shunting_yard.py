@@ -5,7 +5,7 @@ if pytest.use_correct:
     from correct_python_programs.shunting_yard import shunting_yard
 else:
     from python_programs.shunting_yard import shunting_yard
-
+ 
 
 testdata = load_json_testcases(shunting_yard.__name__)
 

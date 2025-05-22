@@ -15,7 +15,7 @@ def main():
     for edge in result:
         print(edge),
     print()
-
+ 
     # Case 2: Strongly connected tree input.
     # Output: (2, 5) (1, 3) (2, 3) (4, 6) (3, 6)
     result = minimum_spanning_tree({

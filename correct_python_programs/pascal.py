@@ -10,4 +10,4 @@ def pascal(n):
         rows.append(row)
 
     return rows
-
+ 

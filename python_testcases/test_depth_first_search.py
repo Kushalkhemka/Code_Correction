@@ -6,7 +6,7 @@ if pytest.use_correct:
 else:
     from python_programs.depth_first_search import depth_first_search
 
-
+ 
 def test1():
     """Case 1: Strongly connected graph
     Output: Path found!

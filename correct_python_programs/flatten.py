@@ -7,3 +7,4 @@ def flatten(arr):
         else:
             yield x
 
+ 

@@ -11,5 +11,5 @@ def next_palindrome(digit_list):
             digit_list[high_mid] += 1
             if low_mid != high_mid:
                 digit_list[low_mid] += 1
-            return digit_list
+            return digit_list 
     return [1] + (len(digit_list) - 1) * [0] + [1]

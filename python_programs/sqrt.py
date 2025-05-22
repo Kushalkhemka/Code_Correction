@@ -14,7 +14,7 @@ Newton-Raphson method implementation.
 Input:
     x: A float
     epsilon: A float
-
+ 
 Precondition:
     x >= 1 and epsilon > 0
 

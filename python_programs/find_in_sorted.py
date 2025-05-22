@@ -13,7 +13,7 @@ def find_in_sorted(arr, x):
     return binsearch(0, len(arr))
 
 
-
+ 
 
 """
 Binary Search

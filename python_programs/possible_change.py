@@ -14,7 +14,7 @@ def possible_change(coins, total):
 Making Change
 change
 
-
+ 
 Input:
     coins: A list of positive ints representing coin denominations
     total: An int value to make change for

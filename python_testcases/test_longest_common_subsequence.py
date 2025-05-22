@@ -8,7 +8,7 @@ else:
 
 
 testdata = load_json_testcases(longest_common_subsequence.__name__)
-
+ 
 
 @pytest.mark.parametrize("input_data,expected", testdata)
 def test_longest_common_subsequence(input_data, expected):

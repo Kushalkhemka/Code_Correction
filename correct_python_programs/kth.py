@@ -11,5 +11,5 @@ def kth(arr, k):
         return kth(below, k)
     elif k >= num_lessoreq:
         return kth(above, k - num_lessoreq)
-    else:
+    else: 
         return pivot

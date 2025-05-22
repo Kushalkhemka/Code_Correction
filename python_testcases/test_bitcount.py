@@ -13,3 +13,4 @@ testdata = load_json_testcases(bitcount.__name__)
 @pytest.mark.parametrize("input_data,expected", testdata)
 def test_bitcount(input_data, expected):
     assert bitcount(*input_data) == expected
+ 

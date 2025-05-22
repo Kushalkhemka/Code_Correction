@@ -5,7 +5,7 @@ if pytest.use_correct:
 else:
     from python_programs.shortest_paths import shortest_paths
 
-
+ 
 def test1():
     """Case 1: Graph with multiple paths
     Output: {'A': 0, 'C': 3, 'B': 1, 'E': 5, 'D': 10, 'F': 4}

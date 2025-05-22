@@ -4,7 +4,7 @@ def gcd(a, b):
     else:
         return gcd(a % b, b)
 
-
+ 
 """
 Input:
     a: A nonnegative int

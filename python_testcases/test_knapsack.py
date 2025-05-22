@@ -8,7 +8,7 @@ else:
 
 
 testdata = load_json_testcases(knapsack.__name__)
-
+ 
 
 @pytest.mark.parametrize("input_data,expected", testdata)
 def test_knapsack(input_data, expected):

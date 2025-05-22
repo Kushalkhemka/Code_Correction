@@ -14,3 +14,4 @@ class Node:
         self.predecessors = predecessors
         self.incoming_nodes = incoming_nodes
         self.outgoing_nodes = outgoing_nodes
+ 

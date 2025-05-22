@@ -8,7 +8,7 @@ def get_factors(n):
             return [i] + get_factors(n // i)
 
     return [n]
-
+ 
 """
 def get_factors(n):
     if n == 1:

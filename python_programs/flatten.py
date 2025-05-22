@@ -6,7 +6,7 @@ def flatten(arr):
         else:
             yield flatten(x)
 
-
+ 
 
 """
 Flatten

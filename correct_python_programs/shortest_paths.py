@@ -12,5 +12,5 @@ def shortest_paths(source, weight_by_edge):
                 weight_by_node[v]
             )
 
-    return weight_by_node
+    return weight_by_node 
 

@@ -10,7 +10,7 @@ def next_permutation(perm):
                     return next_perm
 
 
-
+ 
 """
 Next Permutation
 next-perm

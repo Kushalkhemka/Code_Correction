@@ -13,7 +13,7 @@ Topological Sort
 
 Input:
     nodes: A list of directed graph nodes
-
+ 
 Precondition:
     The input graph is acyclic
 
