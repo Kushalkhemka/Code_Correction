@@ -1,0 +1,10 @@
+{
+  "program": "shunting_yard",
+  "status": "success",
+  "duration_seconds": 60.54,
+  "bug_classification": "Missing condition",
+  "bug_analysis": "The provided code implements the shunting-yard algorithm to convert infix notation to Reverse Polish Notation (RPN). After analyzing the code, I found a bug in the logic for handling operators. Here's the analysis in JSON format:\n\n```json\n{\n    \"line_number\": 10,\n    \"buggy_line\": \"while opstack and precedence[token] <= precedence[opstack[-1]]:\",\n    \"bug_type\": \"Missing condition\",\n    \"explanation\": \"The bug occurs because the code does not check if the token is in the precedence dictionary before accessing it. If the token is not an operator (e.g., it's an integer or an invalid symbol), the code will raise a KeyError when trying to access precedence[token]. This is a missing condition to validate the token before processing it as an operator.\",\n    \"fix_suggestion\": \"Add a condition to check if the token is in the precedence dictionary before comparing precedence. For example: 'while opstack and token in precedence and precedence[token] <= precedence[opstack[-1]]:'\"\n}\n```",
+  "fix_result": "BUG FIX COMPLETE (DeepSeek):\n- Bug Classification: Missing condition\n- Original Bug: The code did not check if the token is in the precedence dictionary before accessing it, which could raise a KeyError for invalid tokens.\n- Fix Applied: Added a condition `token in precedence` to validate the token before processing it as an operator.\n- Reasoning: This ensures the code only processes valid operators and avoids runtime errors for invalid tokens. The fix aligns with the precondition that all non-integer tokens must be valid operators.\n\nThe fixed code has been written to the file with proper classification header.",
+  "llm_used": "DeepSeek",
+  "timestamp": "2025-05-27T12:52:54.184973"
+}

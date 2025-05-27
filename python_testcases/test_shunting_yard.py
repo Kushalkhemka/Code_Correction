@@ -1,11 +1,12 @@
 import pytest
 from load_testdata import load_json_testcases
 
-if pytest.use_correct:
+if pytest.fixed:
+    from fixed_programs.shunting_yard import shunting_yard
+elif pytest.use_correct:
     from correct_python_programs.shunting_yard import shunting_yard
 else:
     from python_programs.shunting_yard import shunting_yard
- 
 
 testdata = load_json_testcases(shunting_yard.__name__)
 

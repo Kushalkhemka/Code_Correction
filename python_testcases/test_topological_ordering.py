@@ -1,7 +1,9 @@
 import pytest
 from node import Node
 
-if pytest.use_correct:
+if pytest.fixed:
+    from fixed_programs.topological_ordering import topological_ordering
+elif pytest.use_correct:
     from correct_python_programs.topological_ordering import topological_ordering
 else:
     from python_programs.topological_ordering import topological_ordering

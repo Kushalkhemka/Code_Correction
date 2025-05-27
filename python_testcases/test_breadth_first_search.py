@@ -1,7 +1,9 @@
 import pytest
 from node import Node
 
-if pytest.use_correct:
+if pytest.fixed:
+    from fixed_programs.breadth_first_search import breadth_first_search
+elif pytest.use_correct:
     from correct_python_programs.breadth_first_search import breadth_first_search
 else:
     from python_programs.breadth_first_search import breadth_first_search

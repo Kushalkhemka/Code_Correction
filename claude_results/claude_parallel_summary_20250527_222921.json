@@ -1,0 +1,29 @@
+{
+  "llm_used": "Claude 3.7 Sonnet",
+  "execution_mode": "parallel",
+  "total_programs": 1,
+  "successful": 0,
+  "failed": 1,
+  "total_duration_seconds": 0.56,
+  "average_duration_seconds": 0.56,
+  "programs_per_minute": 108.08,
+  "bug_classification_statistics": {},
+  "timestamp": "2025-05-27T22:29:21.890004",
+  "successful_programs": [],
+  "failed_programs": [
+    {
+      "program": "gcd",
+      "error": "Bug finder failed: Error calling Claude API: Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-7-sonnet-20240620'}}"
+    }
+  ],
+  "results": [
+    {
+      "program": "gcd",
+      "status": "error",
+      "duration_seconds": 0.5,
+      "error": "Bug finder failed: Error calling Claude API: Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-7-sonnet-20240620'}}",
+      "llm_used": "Claude 3.7 Sonnet",
+      "timestamp": "2025-05-27T22:29:21.841261"
+    }
+  ]
+}

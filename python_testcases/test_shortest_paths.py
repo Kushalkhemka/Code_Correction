@@ -1,6 +1,8 @@
 import pytest
 
-if pytest.use_correct:
+if pytest.fixed:
+    from fixed_programs.shortest_paths import shortest_paths
+elif pytest.use_correct:
     from correct_python_programs.shortest_paths import shortest_paths
 else:
     from python_programs.shortest_paths import shortest_paths

@@ -1,7 +1,9 @@
 import pytest
 from node import Node
 
-if pytest.use_correct:
+if pytest.fixed:
+    from fixed_programs.reverse_linked_list import reverse_linked_list
+elif pytest.use_correct:
     from correct_python_programs.reverse_linked_list import reverse_linked_list
 else:
     from python_programs.reverse_linked_list import reverse_linked_list

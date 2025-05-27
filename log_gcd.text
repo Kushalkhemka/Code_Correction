@@ -1,0 +1,48 @@
+PS C:\Users\Kushal Khemka\Downloads\Agentic AI\Code-Refactoring-QuixBugs> python .\main_hybrid.py gcd
+API key loaded: sk-sU4goGl...sxoB (length: 51)
+Current script path: C:\Users\Kushal Khemka\Downloads\Agentic AI\Code-Refactoring-QuixBugs
+Python programs directory: C:\Users\Kushal Khemka\Downloads\Agentic AI\Code-Refactoring-QuixBugs\python_programs
+Fixed programs directory: C:\Users\Kushal Khemka\Downloads\Agentic AI\Code-Refactoring-QuixBugs\fixed_programs
+Found 41 Python programs:
+- bitcount
+- breadth_first_search
+- bucketsort
+- depth_first_search
+- detect_cycle
+... and 36 more
+Starting hybrid analysis of program: gcd
+Strategy: Try simple approach first, escalate to advanced if needed
+
+=== Hybrid Analysis of program: gcd ===
+Confirmed program file exists: C:\Users\Kushal Khemka\Downloads\Agentic AI\Code-Refactoring-QuixBugs\python_programs\gcd.py
+
+--- PHASE 1: Simple Analysis (Fast Track) ---
+Running simple bug finder...
+Bug Analysis Result:
+{
+    "line_number": 5,
+    "buggy_line": "return gcd(a % b, b)",
+    "bug_type": "incorrect recursive call",
+    "explanation": "The recursive call is incorrect; it currently passes (a % b, b) as arguments. The standard Euclidean algorithm should call gcd(b, a % b) so that with each recursion, the second argument decreases. Using (a % b, b) may lead to infinite recursion or incorrect results.",
+    "fix_suggestion": "Change the line to: 'return gcd(b, a % b)'"
+}
+Running simple bug fixer...
+Fix Result:
+BUG FIX:
+- Original Bug: The recursive call was made with incorrect argument order using "gcd(a % b, b)".
+- Fix Applied: Changed the recursive call to "gcd(b, a % b)".
+- Reasoning: The standard Euclidean algorithm computes the GCD by swapping the roles of b and the remainder of a divided by b. This ensures that with every recursive call, the second parameter reduces, ultimately reaching the base case, and prevents potential infinite recursion or incorrect results.
+Running simple evaluation...
+Simple Evaluation:
+{
+    "validation_passed": true,
+    "pass_rate": 1.0,
+    "total_tests": 6,
+    "passed_tests": 6,
+    "summary": "All tests passed successfully for the fixed version of gcd."
+}
+
+SUCCESS: Simple approach worked! All tests passed.
+
+FINAL RESULT: Successfully fixed gcd using simple approach in 1 total iterations     
+Analysis completed

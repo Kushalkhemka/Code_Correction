@@ -1,102 +1,322 @@
-# QuixBugs Benchmark
+# QuixBugs Hybrid Code Refactoring System
 
-The following benchmark consists of 40 programs from the Quixey Challenge translated into both Python and Java. Each contains a one-line defect, along with passing (when possible) and failing testcases. Defects fall into one of 14 defect classes. Corrected Python programs are also supplied. Quixbugs is intended for investigating cross-language performance by _multi-lingual_ program repair tools. 
+A comprehensive AI-powered code refactoring system that uses a hybrid approach to automatically detect and fix bugs in Python programs from the QuixBugs benchmark.
 
-# Background: Quixey Challenge
-From 2011 to 2013, mobile app search startup Quixey ran a challenge in which programmers were given an implementation of a classic algorithm with a bug on a single line, and had one minute to supply a fix. Success entailed $100 and a possible interview. These programs were developed as challenges for humans by people unaware of program repair.
+## Overview
 
-# Usage
+The `main_hybrid.py` system combines **simple** and **advanced** AI methodologies to provide robust bug detection and fixing capabilities:
 
-All Python is written in Python3.
+- **Phase 1 (Simple)**: Fast track analysis using straightforward bug detection
+- **Phase 2 (Advanced)**: Deep analysis using Chain of Thought reasoning and Self-Refine methodology with ReAct evaluation
 
-To run both defective versions of a program against their tests, as well as the corrected Python version, use the test driver:
+## Project Structure
 
-> python3 tester.py _program\_name_
+```
+Code-Refactoring-QuixBugs/
+├── main_hybrid.py                    # Main hybrid analysis system
+├── python_programs/                  # Original buggy programs (40 programs)
+├── correct_python_programs/          # Reference correct implementations
+├── fixed_programs/                   # Output directory for fixed programs
+├── json_testcases/                   # JSON test cases for most programs
+├── python_testcases/                 # pytest test files
+├── test_runner_native.py             # Native test runner implementation
+├── .env                              # API keys configuration
+├── README.md                         # Original QuixBugs documentation
+└── README_HYBRID.md                  # This file
+```
 
-Output is printed for visual comparison.
+### Key Supporting Files
 
-## Using pytest tests
+- **batch_main.py**: Batch processing system
+- **main_claude.py**: Claude-specific implementation  
+- **main_deepseek.py**: DeepSeek-specific implementation
+- **main_enhanced_cot.py**: Enhanced Chain of Thought approach
+- **sequential_batch.py**: Sequential batch processing
 
-For the Python version, there are [pytest](https://pytest.org/) tests for each program in the `python_testcases` folder. To run them, install pytest using `pip` and then, from the root of the repository, call `pytest` to run tests for a single program or target the whole directory to run every test inside it.
+## Setup and Configuration
+
+### 1. Environment Setup
+
+Create a `.env` file in the project root:
 
 ```bash
+OPENAI_API_KEY=your-openai-api-key-here
+ANTHROPIC_API_KEY=your-anthropic-api-key-here
+DEEPSEEK_API_KEY=your-deepseek-api-key-here
+```
+
+### 2. Install Dependencies
+
+```bash
+pip install python-dotenv
+pip install agents  # AI agents framework
+pip install pytest  # For running tests
+```
+
+### 3. Verify Setup
+
+Test your API configuration:
+
+```bash
+python test_api_key.py
+```
+
+## Usage
+
+### Basic Usage
+
+Analyze and fix a single program:
+
+```bash
+python main_hybrid.py <program_name> [max_iterations]
+```
+
+**Examples:**
+
+```bash
+# Fix the 'gcd' program with default 3 iterations
+python main_hybrid.py gcd
+
+# Fix the 'quicksort' program with up to 5 iterations
+python main_hybrid.py quicksort 5
+
+# Fix the 'breadth_first_search' program
+python main_hybrid.py breadth_first_search
+```
+
+### Available Programs
+
+The system includes 40 Python programs from the QuixBugs benchmark:
+
+**Algorithmic Programs:**
+- `bitcount`, `bucketsort`, `find_first_in_sorted`, `find_in_sorted`
+- `flatten`, `gcd`, `get_factors`, `hanoi`, `is_valid_parenthesization`
+- `kheapsort`, `knapsack`, `kth`, `lcs_length`, `levenshtein`
+- `lis`, `longest_common_subsequence`, `max_sublist_sum`, `mergesort`
+- `next_palindrome`, `next_permutation`, `pascal`, `possible_change`
+- `powerset`, `quicksort`, `rpn_eval`, `sieve`, `sqrt`, `subsequences`
+- `to_base`, `wrap`
+
+**Graph-based Programs:**
+- `breadth_first_search`, `depth_first_search`, `detect_cycle`
+- `minimum_spanning_tree`, `reverse_linked_list`, `shortest_path_length`
+- `shortest_path_lengths`, `shortest_paths`, `topological_ordering`
+
+## How the Hybrid System Works
+
+### Phase 1: Simple Analysis (Fast Track)
+
+1. **Simple Bug Finding**: Quick analysis to identify obvious bugs
+2. **Simple Bug Fixing**: Apply straightforward fixes
+3. **Simple Evaluation**: Basic pass/fail testing
+
+If all tests pass → **SUCCESS** (most programs succeed here)
+
+If tests fail → Escalate to Phase 2
+
+### Phase 2: Advanced Analysis (Deep Dive)
+
+1. **Advanced Bug Analysis**: 
+   - Chain of Thought reasoning
+   - Algorithm understanding
+   - Execution tracing
+   - Root cause analysis
+
+2. **Advanced Bug Fixing** (iterative):
+   - Self-Refine methodology
+   - Learn from previous failures
+   - Comprehensive algorithmic fixes
+
+3. **Advanced Evaluation**:
+   - ReAct (Reasoning and Acting) methodology
+   - Detailed failure analysis
+   - Actionable recommendations
+
+### Key Features
+
+- **Adaptive Strategy**: Automatically escalates complexity as needed
+- **Iterative Refinement**: Up to N iterations to fix complex bugs
+- **Comprehensive Testing**: Uses native test runner with detailed feedback
+- **Failure Analysis**: Tracks failure patterns across iterations
+- **Multiple AI Models**: Uses o3-mini for different specialized agents
+
+## Testing Integration
+
+### Native Test Runner
+
+The system uses `NativeTestRunner` which supports:
+
+- **JSON Test Cases**: For most algorithmic programs
+- **Graph Test Cases**: For graph-based programs using pytest files
+- **Multiple Modes**: 
+  - `buggy`: Test original buggy version
+  - `correct`: Test reference correct version
+  - `fixed`: Test AI-generated fixed version
+
+### Using pytest
+
+For manual testing, you can use pytest directly:
+
+```bash
+# Install pytest
 pip install pytest
+
+# Test a single program (buggy version)
 pytest python_testcases/test_quicksort.py
-# Or
-pytest python_testcases
+
+# Test all programs
+pytest python_testcases/
+
+# Test correct versions
+pytest --correct python_testcases/
+
+# Include slow tests
+pytest --correct --runslow python_testcases/test_knapsack.py
 ```
 
-Tests work for both buggy and correct versions of programs. The default test calls the buggy version, but there is a custom `--correct` flag that uses the correct version of a program.
+### Test Modes
+
+- **Default**: Tests buggy versions (should fail)
+- **--correct**: Tests correct reference versions (should pass)
+- **--runslow**: Includes slow test cases (knapsack program)
+
+**Note**: The `levenshtein` program has a very slow test case that is always skipped.
+
+## Output and Results
+
+### Success Output
+
+```
+SUCCESS: Simple approach worked! All tests passed.
+FINAL RESULT: Successfully fixed gcd using simple approach in 1 total iterations
+```
+
+### Failure Output
+
+```
+FAILED: Could not fix program after simple + 3 advanced iterations
+FINAL RESULT: Failed to fix quicksort after 4 total iterations using advanced approach
+Failure history:
+  Iteration 1: 75.0% pass rate, failed tests: [3, 7]
+  Iteration 2: 87.5% pass rate, failed tests: [7]
+  Iteration 3: 87.5% pass rate, failed tests: [7]
+```
+
+### Generated Files
+
+- **Fixed Code**: `fixed_programs/<program_name>.py`
+- **Logs**: Various log files for debugging
+
+## Advanced Features
+
+### AI Agents Architecture
+
+The system uses specialized AI agents:
+
+**Simple Agents:**
+- `simple_bug_finder`: Quick bug detection
+- `simple_bug_fixer`: Straightforward fixes
+- `simple_evaluator`: Basic validation
+
+**Advanced Agents:**
+- `advanced_bug_analyzer`: Deep Chain of Thought analysis
+- `advanced_bug_fixer`: Self-Refine methodology
+- `advanced_evaluator`: ReAct evaluation with detailed feedback
+
+### Tool Functions
+
+Each agent has access to specialized tools:
+
+- `read_code`: Read source program files
+- `read_testcases`: Read test cases (JSON or graph-based)
+- `write_code`: Write fixed code to output directory
+- `test_code_simple`: Basic testing functionality
+- `test_code_verbose`: Detailed testing with failure analysis
+
+## Configuration Options
+
+### Max Iterations
+
+Control the maximum number of advanced iterations:
 
 ```bash
-pytest --correct python_testcases
+python main_hybrid.py gcd 5  # Up to 5 advanced iterations
 ```
 
-Most of the tests run fast and finish in less than a second, but two tests are slow. The first one is the last test case of the `knapsack` program, and the second one is the fourth test case of the `levenshtein` program. The default behavior skips both these tests. For the `knapsack` test case, using the `--runslow` pytest option will include it in the running tests. However, the `levenshtein` test case is always skipped since it takes a long time to pass and is ignored by the JUnit tests as well.
+### Model Selection
+
+The system uses OpenAI's `o3-mini` model by default. You can modify the model in the agent definitions within `main_hybrid.py`.
+
+## Troubleshooting
+
+### Common Issues
+
+1. **API Key Issues**:
+   ```
+   API key not found in environment variables
+   ```
+   Solution: Ensure `.env` file contains valid `OPENAI_API_KEY`
+
+2. **Program Not Found**:
+   ```
+   ERROR: Program 'xyz' not found
+   ```
+   Solution: Check available programs list or verify program name spelling
+
+3. **Test Failures**:
+   ```
+   Error running tests: [details]
+   ```
+   Solution: Check that `python_programs/` and test directories exist
+
+### Debug Mode
+
+For detailed debugging, examine the console output which shows:
+- Each phase and iteration
+- Agent outputs and reasoning
+- Test results and failure analysis
+- Decision points for escalation
+
+## Performance Considerations
+
+- **Simple programs**: Usually fixed in Phase 1 (< 30 seconds)
+- **Complex programs**: May require Phase 2 (1-5 minutes per iteration)
+- **Very complex programs**: May timeout or require manual intervention
+
+### Timeout Handling
+
+Some tests (like `knapsack` and `levenshtein`) are slow:
+- Use `--runslow` flag for pytest if needed
+- The system handles timeouts gracefully
+
+## Integration with Other Systems
+
+### Batch Processing
+
+Use `batch_main.py` for processing multiple programs:
 
 ```bash
-$ pytest --correct --runslow python_testcases/test_knapsack.py
-
-collected 10 items
-python_testcases/test_knapsack.py ..........     [100%]
-
-========== 10 passed in 240.97s (0:04:00) ========== 
+python batch_main.py
 ```
 
-Some tests, such as the `bitcount` ones, need a timeout. 
-Make sure to check pytest-timeout's documentation to understand its caveats and how it handles timeouts on different systems.
+### Alternative AI Models
 
-# Structure & Details
+- **Claude**: Use `main_claude.py`
+- **DeepSeek**: Use `main_deepseek.py`
+- **Enhanced CoT**: Use `main_enhanced_cot.py`
 
-The root folder holds the test driver. It deserializes the JSON testcases for a selected program, then runs them against the defective versions located in java\_programs/ and python\_programs/. The exception is graph-based programs, for which the testcases are located in the same folder as the corresponding program (they are still run with the test driver in the same manner).
+## Contributing
 
-For reference, corrected versions of the Python programs are in correct\_python\_programs/.
+When modifying the hybrid system:
 
-Programs include:
-- bitcount
-- breadth\_first\_search\*
-- bucketsort
-- depth\_first\_search\*
-- detect\_cycle\*
-- find\_first\_in\_sorted
-- find\_in\_sorted
-- flatten
-- gcd
-- get\_factors
-- hanoi
-- is\_valid\_parenthesization
-- kheapsort
-- knapsack
-- kth
-- lcs\_length
-- levenshtein
-- lis
-- longest\_common\_subsequence
-- max\_sublist\_sum
-- mergesort
-- minimum\_spanning\_tree\*
-- next\_palindrome
-- next\_permutation
-- pascal
-- possible\_change
-- powerset
-- quicksort
-- reverse\_linked\_list\*
-- rpn\_eval
-- shortest\_path\_length\*
-- shortest\_path\_lengths\*
-- shortest\_paths\*
-- shunting\_yard
-- sieve
-- sqrt
-- subsequences
-- to\_base
-- topological\_ordering\*
-- wrap
+1. **Agent Instructions**: Update agent prompts for better reasoning
+2. **Tool Functions**: Add new capabilities via function tools
+3. **Evaluation Logic**: Enhance the success/failure detection
+4. **Model Selection**: Experiment with different AI models
 
-\* - graph-based algorithm
+## Citation
 
+Based on the QuixBugs benchmark:
+> QuixBugs: A Multi-Lingual Program Repair Benchmark Set Based on the Quixey Challenge
 
-
-# Credited Authors
-Derrick Lin, Angela Chen and James Koppel
+For questions or issues, refer to the original QuixBugs documentation in `README.md`.
