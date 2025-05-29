@@ -1,0 +1,9 @@
+```json
+{
+  "line_number": 13,
+  "buggy_line": "stack.append(op(token, a, b))",
+  "bug_type": "logic error (operand order reversed)",
+  "explanation": "When popping from the stack you do `a = stack.pop()` then `b = stack.pop()`. In RPN evaluation the operator should be applied as `b op a`, but the code calls `op(token, a, b)` (i.e. `a op b`), reversing the intended operand order. This only shows up for non-commutative operators like subtraction and division.",
+  "fix_suggestion": "Change the call to swap the arguments: `stack.append(op(token, b, a))`."
+}
+```

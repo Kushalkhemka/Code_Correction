@@ -3,7 +3,7 @@ def longest_common_subsequence(a, b):
         return ''
 
     elif a[0] == b[0]:
-        # Fixed recursive call to advance in both strings when characters match
+        # Advance both strings when there's a match
         return a[0] + longest_common_subsequence(a[1:], b[1:])
 
     else:

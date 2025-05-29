@@ -1,0 +1,9 @@
+```json
+{
+  "line_number": 5,
+  "buggy_line": "return [[first] + subset for subset in rest_subsets]",
+  "bug_type": "logic error",
+  "explanation": "This line only returns the subsets that include the first element of `arr`, omitting all the subsets that exclude it. A power set must include both.",
+  "fix_suggestion": "Change the return to:\n  return rest_subsets + [[first] + subset for subset in rest_subsets]\nso that you combine the subsets without `first` and those with `first`."
+}
+```

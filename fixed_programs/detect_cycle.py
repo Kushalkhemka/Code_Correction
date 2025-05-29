@@ -1,25 +1,23 @@
 def detect_cycle(node):
     hare = tortoise = node
- 
-    while True:
-        # Fix: Check if hare is None or its successor is None to avoid AttributeError
-        if hare is None or hare.successor is None:
-            return False
- 
+
+    while hare and hare.successor and hare.successor.successor:
         tortoise = tortoise.successor
         hare = hare.successor.successor
- 
         if hare is tortoise:
             return True
+    return False
 
 
 """
 Linked List Cycle Detection
-Uses the tortoise-hare cycle detection algorithm
+Tortoise-Hare Algorithm
+
+Detects whether a linked list has a cycle using two pointers (tortoise and hare).
 
 Input:
-    node: The head of a linked list
+    node: The head node of a linked list
 
 Output:
-    True if a cycle is detected, False otherwise
+    Boolean indicating whether the linked list is cyclic
 """

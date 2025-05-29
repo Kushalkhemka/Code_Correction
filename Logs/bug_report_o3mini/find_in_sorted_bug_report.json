@@ -1,0 +1,7 @@
+{
+    "line_number": 9,
+    "buggy_line": "return binsearch(mid, end)",
+    "bug_type": "Recursion boundary error",
+    "explanation": "When x > arr[mid], the recursive call uses the same mid index (i.e., binsearch(mid, end)) instead of excluding it. This may cause an infinite loop or repeatedly check the same element, especially when start+1 equals end. The correct behavior is to start the search from the next index (mid+1).",
+    "fix_suggestion": "Change the line to: return binsearch(mid + 1, end)"
+}

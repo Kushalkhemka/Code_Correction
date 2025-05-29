@@ -4,12 +4,11 @@ def kth(arr, k):
     above = [x for x in arr if x > pivot]
 
     num_less = len(below)
-    num_lessoreq = len(arr) - len(above)  # count of elements <= pivot (includes pivot)
+    num_lessoreq = len(arr) - len(above)
 
     if k < num_less:
         return kth(below, k)
     elif k >= num_lessoreq:
-        # Adjust k by subtracting the elements that are less than or equal to the pivot
         return kth(above, k - num_lessoreq)
     else:
         return pivot

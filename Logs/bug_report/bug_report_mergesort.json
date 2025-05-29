@@ -1,0 +1,9 @@
+```json
+{
+  "line_number": 16,
+  "buggy_line": "if len(arr) == 0:",
+  "bug_type": "Incorrect base-case condition",
+  "explanation": "The function only stops recursion when the array is empty. A single-element list never matches len(arr) == 0, so mergesort([x]) recurses endlessly, leading to infinite recursion.",
+  "fix_suggestion": "Change the condition to handle lists of size 0 or 1. For example:\n\n    if len(arr) <= 1:\n        return arr"
+}
+```

@@ -1,0 +1,7 @@
+{
+    "line_number": 4,
+    "buggy_line": "        n ^= n - 1",
+    "bug_type": "incorrect operator",
+    "explanation": "The algorithm is intended to use Brian Kernighan's method to clear the lowest set bit by performing a bitwise AND with (n - 1). However, the code uses the XOR operator (^=) instead of the AND operator (&=). This results in incorrect behavior and can lead to an infinite loop since n is not reduced as expected.",
+    "fix_suggestion": "Replace the XOR operator with the AND operator so that the line reads: 'n &= n - 1'"
+}

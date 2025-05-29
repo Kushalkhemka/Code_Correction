@@ -20,17 +20,16 @@ Code-Refactoring-QuixBugs/
 ├── json_testcases/                   # JSON test cases for most programs
 ├── python_testcases/                 # pytest test files
 ├── test_runner_native.py             # Native test runner implementation
-├── .env                              # API keys configuration
+├── .env                              # API keys configuration (deleted)
 ├── README.md                         # Original QuixBugs documentation
-└── README_HYBRID.md                  # This file
 ```
 
 ### Key Supporting Files
-
-- **batch_main.py**: Batch processing system
+- **main_hybrid.py**: 2 Layered (Simple Analysis + Deep analysis) Agent
+ - **main.py**: Only Simple Analysis (without COT, SelfRefine, ReACT)
+- **batch_main.py**: Batch processing system (parallel)
 - **main_claude.py**: Claude-specific implementation  
 - **main_deepseek.py**: DeepSeek-specific implementation
-- **main_enhanced_cot.py**: Enhanced Chain of Thought approach
 - **sequential_batch.py**: Sequential batch processing
 
 ## Setup and Configuration
@@ -303,7 +302,6 @@ python batch_main.py
 
 - **Claude**: Use `main_claude.py`
 - **DeepSeek**: Use `main_deepseek.py`
-- **Enhanced CoT**: Use `main_enhanced_cot.py`
 
 ## Contributing
 

@@ -24,7 +24,7 @@ def quicksort(arr):
     if len(arr) > 2:
         mid = len(arr) // 2
         candidates = [(arr[0], 0), (arr[mid], mid), (arr[-1], -1)]
-        # Sort candidates based on values and choose the median
+        # Sort candidates based on values and choose the median as pivot
         pivot = sorted(candidates, key=lambda x: x[0])[1][0]
     else:
         pivot = arr[0]
@@ -44,6 +44,7 @@ def quicksort(arr):
     
     # Recursively apply quicksort and combine results
     return quicksort(less_than_pivot) + [pivot] * pivot_count + quicksort(greater_than_pivot)
+
 
 # Example usage:
 if __name__ == "__main__":

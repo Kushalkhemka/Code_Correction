@@ -163,19 +163,31 @@ class NativeTestRunner:
                 "pass_rate": 0
             }
         
+        # Store original modules to restore later
+        original_modules = {}
+        modules_to_cleanup = []
+        
         try:
-            # Create a mock pytest object to control imports
+            # Create a proper pytest mock that matches the real pytest behavior
             import types
             pytest_mock = types.ModuleType('pytest')
+            
+            # Set the flags based on mode - THIS IS THE KEY FIX
             pytest_mock.fixed = (mode == "fixed")
             pytest_mock.use_correct = (mode == "correct")
             
-            # Add to sys.modules temporarily
-            sys.modules['pytest'] = pytest_mock
+            # Add fixture-like behavior
+            def fixture(func):
+                return func
+            pytest_mock.fixture = fixture
             
-            # Import the test module
-            spec = importlib.util.spec_from_file_location(f"test_{program_name}", test_file)
-            test_module = importlib.util.module_from_spec(spec)
+            # Store original pytest if it exists
+            if 'pytest' in sys.modules:
+                original_modules['pytest'] = sys.modules['pytest']
+            
+            # Replace with our mock
+            sys.modules['pytest'] = pytest_mock
+            modules_to_cleanup.append('pytest')
             
             # Add node module to path if needed
             node_file = self.base_dir / "python_testcases" / "node.py"
@@ -183,13 +195,49 @@ class NativeTestRunner:
                 node_spec = importlib.util.spec_from_file_location("node", node_file)
                 node_module = importlib.util.module_from_spec(node_spec)
                 node_spec.loader.exec_module(node_module)
-                sys.modules['node'] = node_module
+                if 'node' not in sys.modules:
+                    sys.modules['node'] = node_module
+                    modules_to_cleanup.append('node')
             
+            # Clear any cached imports of the test module
+            test_module_name = f"test_{program_name}"
+            if test_module_name in sys.modules:
+                original_modules[test_module_name] = sys.modules[test_module_name]
+                del sys.modules[test_module_name]
+            
+            # Also clear any cached imports of the program modules
+            program_modules = [program_name]
+            if mode == "fixed":
+                program_modules.extend([f"fixed_programs.{program_name}"])
+            elif mode == "correct":
+                program_modules.extend([f"correct_python_programs.{program_name}"])
+            else:
+                program_modules.extend([f"python_programs.{program_name}"])
+            
+            for mod_name in program_modules:
+                if mod_name in sys.modules:
+                    original_modules[mod_name] = sys.modules[mod_name]
+                    del sys.modules[mod_name]
+            
+            # Import the test module fresh
+            spec = importlib.util.spec_from_file_location(test_module_name, test_file)
+            test_module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(test_module)
             
             # Find all test functions
-            test_functions = [getattr(test_module, name) for name in dir(test_module) 
-                            if name.startswith('test') and callable(getattr(test_module, name))]
+            test_functions = []
+            for name in dir(test_module):
+                if name.startswith('test') and callable(getattr(test_module, name)):
+                    test_functions.append(getattr(test_module, name))
+            
+            if not test_functions:
+                return {
+                    "success": False,
+                    "error": "No test functions found",
+                    "passed": 0,
+                    "total": 0,
+                    "pass_rate": 0
+                }
             
             # Run tests
             passed = 0
@@ -197,10 +245,15 @@ class NativeTestRunner:
             
             for test_func in test_functions:
                 try:
+                    # Execute the test function
                     test_func()
                     passed += 1
+                except AssertionError as e:
+                    # Assertion failures are test failures
+                    failed_tests.append(f"{test_func.__name__}: AssertionError - {str(e)}")
                 except Exception as e:
-                    failed_tests.append(f"{test_func.__name__}: {str(e)}")
+                    # Other exceptions are also test failures
+                    failed_tests.append(f"{test_func.__name__}: {type(e).__name__} - {str(e)}")
             
             total = len(test_functions)
             success = passed == total
@@ -220,17 +273,20 @@ class NativeTestRunner:
         except Exception as e:
             return {
                 "success": False,
-                "error": f"Failed to run graph tests: {str(e)}",
+                "error": f"Failed to run graph tests: {str(e)}\n{traceback.format_exc()}",
                 "passed": 0,
                 "total": 0,
                 "pass_rate": 0
             }
         finally:
-            # Clean up
-            if 'pytest' in sys.modules:
-                del sys.modules['pytest']
-            if 'node' in sys.modules and 'node' not in sys.modules:
-                del sys.modules['node']
+            # Clean up: restore original modules and remove our additions
+            for module_name in modules_to_cleanup:
+                if module_name in sys.modules:
+                    del sys.modules[module_name]
+            
+            # Restore original modules
+            for module_name, original_module in original_modules.items():
+                sys.modules[module_name] = original_module
     
     def compare_implementations(self, program_name, verbose=False):
         """Compare all three implementations"""

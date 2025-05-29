@@ -1,0 +1,1 @@
+{"line_number": 9, "buggy_line": "return []", "bug_type": "logical error", "explanation": "When n is prime (and greater than 1), the loop finds no divisors and falls through to this return, yielding an empty list instead of the prime itself.", "fix_suggestion": "Change this line to `return [n]` so that primes are returned as their own factor."}

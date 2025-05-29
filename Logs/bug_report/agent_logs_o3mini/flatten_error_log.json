@@ -1,0 +1,7 @@
+{
+  "program": "flatten",
+  "timestamp": "2025-05-29T12:16:03.409928",
+  "success": false,
+  "error": "'charmap' codec can't encode character '\\u2192' in position 17628: character maps to <undefined>",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Kushal Khemka\\Downloads\\Agentic AI\\Code-Refactoring-QuixBugs\\run_sequential.py\", line 246, in run_all_programs_sequentially\n    log_file = log_capture.save_log(agent_logs_dir)\n  File \"C:\\Users\\Kushal Khemka\\Downloads\\Agentic AI\\Code-Refactoring-QuixBugs\\run_sequential.py\", line 70, in save_log\n    f.write(self.log.getvalue())\n  File \"C:\\Users\\Kushal Khemka\\AppData\\Local\\Programs\\Python\\Python310\\lib\\encodings\\cp1252.py\", line 19, in encode\n    return codecs.charmap_encode(input,self.errors,encoding_table)[0]\nUnicodeEncodeError: 'charmap' codec can't encode character '\\u2192' in position 17628: character maps to <undefined>\n"
+}

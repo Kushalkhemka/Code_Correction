@@ -1,0 +1,9 @@
+```json
+{
+  "line_number": 6,
+  "buggy_line": "if set(ordered_nodes).issuperset(nextnode.outgoing_nodes) and nextnode not in ordered_nodes:",
+  "bug_type": "Logic error",
+  "explanation": "The code is checking whether all of nextnode's *outgoing* nodes are already in ordered_nodes before appending nextnode. In a topological sort you need to ensure that all of nextnode's *incoming* dependencies are satisfied, not its outgoing edges.",
+  "fix_suggestion": "Change the condition to check incoming_nodes instead of outgoing_nodes:  \n```python\nif set(ordered_nodes).issuperset(nextnode.incoming_nodes) and nextnode not in ordered_nodes:\n```"
+}
+```

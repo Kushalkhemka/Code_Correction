@@ -6,7 +6,7 @@ def find_in_sorted(arr, x):
         if x < arr[mid]:
             return binsearch(start, mid)
         elif x > arr[mid]:
-            return binsearch(mid + 1, end)  # Fixed: Exclude mid from the next search range
+            return binsearch(mid + 1, end)
         else:
             return mid
 
@@ -14,5 +14,11 @@ def find_in_sorted(arr, x):
 
 
 if __name__ == '__main__':
-    # Example usage
+    # Test cases demonstrating usage
+    # Example provided in documentation
     print(find_in_sorted([3, 4, 5, 5, 5, 5, 6], 5))  # Expected output: 3
+    
+    # Additional tests
+    print(find_in_sorted([1, 2, 3, 4, 5], 1))  # Expected output: 0
+    print(find_in_sorted([1, 2, 3, 4, 5], 5))  # Expected output: 4
+    print(find_in_sorted([1, 2, 3, 4, 5], 6))  # Expected output: -1

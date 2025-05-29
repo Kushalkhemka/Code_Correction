@@ -1,9 +1,11 @@
 # Python 3
+
 def possible_change(coins, total):
     if total == 0:
         return 1
     if total < 0:
         return 0
+    # Added base case for when there are no coins left
     if not coins:
         return 0
 

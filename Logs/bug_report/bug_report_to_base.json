@@ -1,0 +1,1 @@
+{"line_number": 8, "buggy_line": "result = result + alphabet[i]", "bug_type": "logic error (reversed output)", "explanation": "Appending the new digit to the end builds the converted string in reverse order.", "fix_suggestion": "Prepend the digit instead: result = alphabet[i] + result"}

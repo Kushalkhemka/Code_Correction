@@ -1,0 +1,9 @@
+```json
+{
+  "line_number": 7,
+  "buggy_line": "for i, count in enumerate(arr):",
+  "bug_type": "Logic error (wrong variable in loop)",
+  "explanation": "The code is supposed to iterate over the bucket counts, but it mistakenly enumerates the original array `arr` instead of the `counts` list. As a result, `count` holds array elements rather than the number of occurrences for each bucket index.",
+  "fix_suggestion": "Change `enumerate(arr)` to `enumerate(counts)`, i.e.:\n\n    for i, count in enumerate(counts):"
+}
+```

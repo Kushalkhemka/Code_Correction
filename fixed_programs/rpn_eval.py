@@ -8,14 +8,14 @@ def rpn_eval(tokens):
         }[symbol](a, b)
 
     stack = []
- 
+
     for token in tokens:
         if isinstance(token, float):
             stack.append(token)
         else:
             a = stack.pop()
             b = stack.pop()
-            # Fixed parameter order: first operand b and then a
+            # Fix: reverse order of operands to account for RPN evaluation
             stack.append(
                 op(token, b, a)
             )

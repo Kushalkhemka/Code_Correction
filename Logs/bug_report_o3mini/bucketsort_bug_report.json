@@ -1,0 +1,7 @@
+{
+  "line_number": 7,
+  "buggy_line": "for i, count in enumerate(arr):",
+  "bug_type": "incorrect variable used",
+  "explanation": "The loop is iterating over 'arr' instead of 'counts'. This means that instead of extending the sorted array based on the count of each integer, it incorrectly uses the values from the original array 'arr'. This leads to incorrect behavior because the algorithm should enumerate over the count of occurrences for each possible integer value in the range [0, k).",
+  "fix_suggestion": "Change the loop to iterate over the 'counts' list. Replace the line with: 'for i, count in enumerate(counts):'"
+}

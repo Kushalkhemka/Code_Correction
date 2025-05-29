@@ -7,11 +7,11 @@ class Node:
         self.incoming_nodes = incoming_nodes if incoming_nodes is not None else []
         self.outgoing_nodes = outgoing_nodes if outgoing_nodes is not None else []
 
-    def successor(self):
+    def get_successor(self):
         return self.successor
 
-    def successors(self):
+    def get_successors(self):
         return self.successors
 
-    def predecessors(self):
+    def get_predecessors(self):
         return self.predecessors

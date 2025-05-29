@@ -1,0 +1,11 @@
+Here’s the bug report:
+
+```json
+{
+  "line_number": 5,
+  "buggy_line": "        max_ending_here = max_ending_here + x",
+  "bug_type": "logic error",
+  "explanation": "Kadane’s algorithm requires you to reset the running sum to 0 (or to x if you disallow empty subarrays) whenever it falls below 0. By simply adding x to max_ending_here, you carry a negative subtotal forward and miss potentially higher sums in subsequent positive runs. In the example [4, -5, 2, 1, -1, 3] this causes you to compute only 4 instead of the correct 5.",
+  "fix_suggestion": "Change that line to reset on negatives. For allowing empty subarrays use:\n    max_ending_here = max(0, max_ending_here + x)\nOr if you require non-empty subarrays use:\n    max_ending_here = max(x, max_ending_here + x)"
+}
+```

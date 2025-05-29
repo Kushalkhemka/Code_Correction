@@ -1,0 +1,5 @@
+{"line_number": 6,  
+ "buggy_line": "steps.append((start, helper))",  
+ "bug_type": "Logic error",  
+ "explanation": "When moving the largest disk of the current recursive frame, it’s being sent to the helper peg instead of the intended end peg. For a single disk (height=1), this causes the disk to move to the wrong peg.",  
+ "fix_suggestion": "Change that line to steps.append((start, end)) so that the bottom disk moves from start directly to end."}

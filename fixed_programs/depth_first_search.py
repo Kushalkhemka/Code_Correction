@@ -4,20 +4,17 @@ def depth_first_search(startnode, goalnode):
     def search_from(node):
         if node in nodesvisited:
             return False
-        # Mark node as visited to prevent revisiting
-        nodesvisited.add(node)
+        nodesvisited.add(node)  # Mark the node as visited
         if node is goalnode:
             return True
-        else:
-            return any(
-                search_from(nextnode) for nextnode in node.successors
-            )
+        return any(search_from(nextnode) for nextnode in node.successors)
  
     return search_from(startnode)
 
 
 """
 Depth-first Search
+
 
 Input:
     startnode: A digraph node

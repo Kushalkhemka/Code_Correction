@@ -1,19 +1,19 @@
 def kheapsort(arr, k):
     import heapq
 
-    # Use k+1 elements because every element is at most k positions away
+    # Use the first k+1 elements to initialize the heap
     heap = arr[:k+1]
     heapq.heapify(heap)
 
-    # Process the remaining elements starting from index k+1
+    # Iterate over the remaining elements
     for x in arr[k+1:]:
         yield heapq.heappushpop(heap, x)
 
-    # Extract remaining elements from the heap
+    # Yield the remaining elements in the heap in sorted order
     while heap:
         yield heapq.heappop(heap)
 
-
+ 
 """
 K-Heapsort
 k-heapsort

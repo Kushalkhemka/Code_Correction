@@ -1,0 +1,9 @@
+```json
+{
+  "line_number": 5,
+  "buggy_line": "return gcd(a % b, b)",
+  "bug_type": "Logic Error (incorrect argument order)",
+  "explanation": "The Euclidean algorithm must recurse on gcd(b, a % b), not gcd(a % b, b).  When a < b, a % b == a, so calling gcd(a % b, b) never makes progress and leads to infinite recursion.",
+  "fix_suggestion": "Change the recursive call to `return gcd(b, a % b)`."
+}
+```

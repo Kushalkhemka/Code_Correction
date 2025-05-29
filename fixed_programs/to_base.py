@@ -6,6 +6,7 @@ def to_base(num, b):
     while num > 0:
         i = num % b
         num = num // b
+        # Prepend the new digit to fix the order
         result = alphabet[i] + result
     return result
 

@@ -1,0 +1,9 @@
+```json
+{
+  "line_number": 5,
+  "buggy_line": "if perm[j] < perm[i]:",
+  "bug_type": "Logic error – wrong comparison",
+  "explanation": "To find the next lexicographic permutation, you must swap perm[i] with the smallest element strictly greater than it to its right. The code’s condition perm[j] < perm[i] picks smaller elements instead of larger ones.",
+  "fix_suggestion": "Change the comparison operator to '>' so that it reads: if perm[j] > perm[i]:"
+}
+```

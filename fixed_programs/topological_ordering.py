@@ -3,7 +3,6 @@ def topological_ordering(nodes):
 
     for node in ordered_nodes:
         for nextnode in node.outgoing_nodes:
-            # Use incoming_nodes to ensure that all dependencies for nextnode have been satisfied
             if set(ordered_nodes).issuperset(nextnode.incoming_nodes) and nextnode not in ordered_nodes:
                 ordered_nodes.append(nextnode)
 

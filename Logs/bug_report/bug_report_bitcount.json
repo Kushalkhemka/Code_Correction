@@ -1,0 +1,9 @@
+```json
+{
+  "line_number": 4,
+  "buggy_line": "n ^= n - 1",
+  "bug_type": "Incorrect operator",
+  "explanation": "The classic popcount trick clears the lowest set bit by doing n &= n - 1. Using XOR (n ^= n - 1) does not clear that bit and leads to wrong results or an infinite loop.",
+  "fix_suggestion": "Replace the XOR assignment with AND assignment: `n &= n - 1`."
+}
+```

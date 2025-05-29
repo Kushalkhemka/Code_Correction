@@ -1,43 +1,37 @@
 def lis(arr):
-    """
-    Returns the length of the longest increasing subsequence in the array.
-    Uses a binary search approach (Patience Sorting algorithm).
-    """
-    if not arr:
-        return 0
+    ends = {}
+    longest = 0
 
-    # 'tails' will store the smallest tail for all increasing subsequences of given lengths.
-    tails = []
+    for i, val in enumerate(arr):
 
-    # Import bisect for binary search
-    import bisect
+        prefix_lengths = [j for j in range(1, longest + 1) if arr[ends[j]] < val]
 
-    for num in arr:
-        # Find insertion point: first index in tails where num can be placed
-        idx = bisect.bisect_left(tails, num)
-        # If num is greater than all tails, extend the list
-        if idx == len(tails):
-            tails.append(num)
-        else:
-            # Otherwise, replace to maintain minimal tail values
-            tails[idx] = num
+        length = max(prefix_lengths) if prefix_lengths else 0
 
-    return len(tails)
+        # Split the condition: update longest only when a new subsequence is extended
+        if length == longest:
+            ends[length + 1] = i
+            longest = length + 1
+        elif val < arr[ends[length + 1]]:
+            ends[length + 1] = i
 
-# For testing purposes
-if __name__ == '__main__':
-    test_cases = [
-        ([4, 1, 5, 3, 7, 6, 2], 3),
-        # Additional test cases based on feedback, note that feedback expected values are off by one
-        # But here, we assume standard definition of longest increasing subsequence
-        ([10, 20, 11, 32, 22, 48, 43], 4),
-        ([4, 2, 1], 1),
-        ([1, 2, 3, 4, 5, 6], 6),
-        ([], 0),
-        ([5], 1),
-        ([5, 4, 3, 2, 1], 1)
-    ]
+    return longest
 
-    for i, (inp, expected) in enumerate(test_cases, 1):
-        result = lis(inp)
-        print(f"Test case {i}: Input: {inp}, Expected: {expected}, Got: {result}")
+
+"""
+Longest Increasing Subsequence
+longest-increasing-subsequence
+
+Input:
+    arr: A sequence of ints
+
+Precondition:
+    The ints in arr are unique
+
+Output:
+    The length of the longest monotonically increasing subsequence of arr
+
+Example:
+    >>> lis([4, 1, 5, 3, 7, 6, 2])
+    3
+"""

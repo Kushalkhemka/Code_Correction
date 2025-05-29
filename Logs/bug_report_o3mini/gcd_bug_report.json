@@ -1,0 +1,7 @@
+{
+    "line_number": 5,
+    "buggy_line": "return gcd(a % b, b)",
+    "bug_type": "incorrect argument ordering",
+    "explanation": "The Euclidean algorithm requires you to call gcd with the second argument and the remainder of the division of the first argument by the second (i.e., gcd(b, a % b)). By calling gcd(a % b, b), the function ends up computing the wrong values and will either not terminate correctly or produce incorrect results.",
+    "fix_suggestion": "Change the recursive call to: return gcd(b, a % b)"
+}

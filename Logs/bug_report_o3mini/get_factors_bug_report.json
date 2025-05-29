@@ -1,0 +1,7 @@
+{
+    "line_number": 9,
+    "buggy_line": "    return []",
+    "bug_type": "incorrect return value for prime numbers",
+    "explanation": "When n is prime (such as 101), the loop never finds a factor and the function incorrectly returns an empty list. Instead, it should return [n] as per the expected prime factorization output.",
+    "fix_suggestion": "Replace the final 'return []' with 'return [n]' so that the function returns the prime number itself when no factors are found."
+}

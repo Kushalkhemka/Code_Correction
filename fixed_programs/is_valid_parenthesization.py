@@ -10,7 +10,7 @@ def is_valid_parenthesization(parens):
 
     return depth == 0
 
-
+ 
 """
 Nested Parens
 Input:
@@ -26,7 +26,5 @@ Examples:
     >>> is_valid_parenthesization('((()()))()')
     True
     >>> is_valid_parenthesization(')()(')
-    False
-    >>> is_valid_parenthesization('((')
     False
 """

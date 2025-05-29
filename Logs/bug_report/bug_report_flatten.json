@@ -1,0 +1,1 @@
+{"line_number": 7, "buggy_line": "yield flatten(x)", "bug_type": "logical error", "explanation": "In the else branch, the code yields flatten(x) (which is a generator) instead of the actual element x. This results in nested generators rather than the flattened elements.", "fix_suggestion": "Replace `yield flatten(x)` with `yield x` so that the element itself is yielded."}

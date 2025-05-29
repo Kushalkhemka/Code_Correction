@@ -8,7 +8,7 @@ def get_factors(n):
 
     return [n]
 
-
+ 
 """
 Prime Factorization
 

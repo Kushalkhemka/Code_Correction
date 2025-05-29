@@ -1,0 +1,74 @@
+2025-05-29 10:55:35,861 - INFO - DeepSeek API key loaded: sk-bc39464fe877...b777 (length: 35)
+2025-05-29 10:55:35,862 - INFO - Results directory: C:\Users\Kushal Khemka\Downloads\Agentic AI\Code-Refactoring-QuixBugs\deepseek_hybrid_results
+2025-05-29 10:55:35,863 - INFO - Fixed programs directory: C:\Users\Kushal Khemka\Downloads\Agentic AI\Code-Refactoring-QuixBugs\fixed_programs_deepseek_hybrid
+2025-05-29 10:55:35,864 - INFO - Found 41 programs to analyze with DeepSeek Hybrid
+2025-05-29 10:55:35,875 - INFO - Running ALL 41 programs with DeepSeek Hybrid
+2025-05-29 10:55:35,897 - INFO - Max iterations per program: 3
+2025-05-29 10:56:00,519 - INFO - Starting DeepSeek Hybrid sequential batch analysis of 41 programs
+2025-05-29 10:56:00,521 - INFO - Starting DeepSeek hybrid analysis of program: bitcount
+2025-05-29 10:56:00,521 - INFO - --- PHASE 1: Simple Analysis (Fast Track) ---
+2025-05-29 10:56:00,521 - INFO - Running DeepSeek simple bug finder...
+2025-05-29 10:56:01,772 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 10:56:02,509 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 10:56:08,371 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 10:56:14,172 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 10:56:38,687 - INFO - Running DeepSeek simple bug fixer...
+2025-05-29 10:56:38,878 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 10:56:40,822 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 10:56:43,643 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 10:56:47,402 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 10:56:48,196 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 10:56:53,149 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 10:57:07,996 - INFO - Running DeepSeek simple evaluation...
+2025-05-29 10:57:08,191 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 10:57:09,656 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 10:57:12,938 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 10:57:15,151 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 10:57:20,824 - INFO - DeepSeek simple approach evaluation unclear. Escalating to advanced mode...
+2025-05-29 10:57:20,831 - INFO - --- PHASE 2: Advanced Analysis (Deep Dive) ---
+2025-05-29 10:57:20,832 - INFO - Running DeepSeek advanced bug analysis with Chain of Thought...
+2025-05-29 10:57:21,022 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 10:57:26,340 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 10:57:26,404 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 10:57:27,424 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 10:57:54,865 - INFO - --- Advanced Iteration 1/3 ---
+2025-05-29 10:57:54,866 - INFO - Running DeepSeek advanced Self-Refine bug fixing...
+2025-05-29 10:57:55,075 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 10:57:58,788 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 10:58:16,599 - INFO - Analysis interrupted by user
+2025-05-29 10:58:18,110 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 11:27:48,351 - INFO - DeepSeek API key loaded: sk-bc39464fe877...b777 (length: 35)
+2025-05-29 11:27:48,352 - INFO - Results directory: C:\Users\Kushal Khemka\Downloads\Agentic AI\Code-Refactoring-QuixBugs\deepseek_hybrid_results
+2025-05-29 11:27:48,352 - INFO - Fixed programs directory: C:\Users\Kushal Khemka\Downloads\Agentic AI\Code-Refactoring-QuixBugs\fixed_programs_deepseek_hybrid
+2025-05-29 11:27:48,353 - INFO - Found 41 programs to analyze with DeepSeek Hybrid
+2025-05-29 11:27:48,363 - INFO - Running selected programs: ['gcd']
+2025-05-29 11:27:48,363 - INFO - Max iterations per program: 3
+2025-05-29 11:27:48,366 - INFO - Starting DeepSeek Hybrid sequential batch analysis of 1 programs
+2025-05-29 11:27:48,368 - INFO - Starting DeepSeek hybrid analysis of program: gcd
+2025-05-29 11:27:48,369 - INFO - --- PHASE 1: Simple Analysis (Fast Track) ---
+2025-05-29 11:27:48,369 - INFO - Running DeepSeek simple bug finder...
+2025-05-29 11:27:49,446 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 11:27:54,322 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 11:27:55,231 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 11:28:00,466 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 11:28:22,640 - INFO - Running DeepSeek simple bug fixer...
+2025-05-29 11:28:22,836 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 11:28:27,148 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 11:28:27,471 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 11:28:32,805 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 11:28:37,252 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 11:28:39,151 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 11:28:47,027 - INFO - Running DeepSeek simple evaluation...
+2025-05-29 11:28:47,221 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 11:28:49,745 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 11:28:52,123 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 11:28:56,217 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 11:28:57,962 - INFO - DeepSeek simple approach evaluation unclear. Escalating to advanced mode...
+2025-05-29 11:28:57,963 - INFO - --- PHASE 2: Advanced Analysis (Deep Dive) ---
+2025-05-29 11:28:57,964 - INFO - Running DeepSeek advanced bug analysis with Chain of Thought...
+2025-05-29 11:28:58,156 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 11:29:02,410 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 11:29:04,006 - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-29 11:29:08,064 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-05-29 11:29:15,376 - INFO - Analysis interrupted by user
+2025-05-29 11:29:15,971 - INFO - HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

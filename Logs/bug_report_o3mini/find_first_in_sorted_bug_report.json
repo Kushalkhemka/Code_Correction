@@ -1,0 +1,7 @@
+{
+  "line_number": 3,
+  "buggy_line": "hi = len(arr)",
+  "bug_type": "incorrect boundary initialization",
+  "explanation": "The 'hi' variable is initialized to len(arr), which is out of the valid index range of the array (indices 0 to len(arr)-1). This can lead to an IndexError when arr[mid] is accessed in the while loop, especially when the search goes beyond the last element. In a typical binary search, hi should be initialized to len(arr) - 1 so that all indices used are valid.",
+  "fix_suggestion": "Change the initialization to: hi = len(arr) - 1"
+}

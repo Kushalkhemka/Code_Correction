@@ -2,10 +2,12 @@ def pascal(n):
     rows = [[1]]
     for r in range(1, n):
         row = []
-        for c in range(0, r+1):
-            upleft = rows[r - 1][c - 1] if c > 0 else 0
-            upright = rows[r - 1][c] if c < r else 0
-            row.append(upleft + upright)
+        for c in range(0, r + 1):
+            if c == 0 or c == r:
+                row.append(1)
+            else:
+                # Sum of the two adjacent elements from the previous row
+                row.append(rows[r - 1][c - 1] + rows[r - 1][c])
         rows.append(row)
     return rows
 

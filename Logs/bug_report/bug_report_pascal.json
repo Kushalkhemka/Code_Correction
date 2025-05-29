@@ -1,0 +1,9 @@
+```json
+{
+  "line_number": 5,
+  "buggy_line": "for c in range(0, r):",
+  "bug_type": "Off-by-one error",
+  "explanation": "Each new row in Pascal’s triangle must have r+1 entries, but `range(0, r)` only iterates r times, so the last '1' at the end of each row is never added.",
+  "fix_suggestion": "Use `range(0, r+1)` (or simply `range(r+1)`) so that the loop runs r+1 times, e.g.:  \n```python\nfor c in range(r+1):\n    …\n```"
+}
+```

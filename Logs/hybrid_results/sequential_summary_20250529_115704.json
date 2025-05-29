@@ -1,0 +1,24 @@
+{
+  "timestamp": "20250529_115704",
+  "total_programs": 1,
+  "successful": 1,
+  "failed": 0,
+  "success_rate": 1.0,
+  "total_duration_seconds": 20.51683807373047,
+  "average_duration_seconds": 20.51683807373047,
+  "programs_per_minute": 2.924427233103883,
+  "bug_classification_statistics": {
+    "incorrect recursive call": 1
+  },
+  "results": [
+    {
+      "program": "gcd",
+      "success": true,
+      "approach": "simple",
+      "iterations": 1,
+      "bug_analysis": "{\n  \"line_number\": 5,\n  \"buggy_line\": \"return gcd(a % b, b)\",\n  \"bug_type\": \"incorrect recursive call\",\n  \"explanation\": \"The recursive call is made with the arguments in the wrong order. The Euclidean Algorithm requires calling gcd(b, a % b) so that the smaller number (or remainder) is used appropriately in the next recursive step. Using gcd(a % b, b) causes the function to repeatedly call itself with the same parameters, leading to infinite recursion.\",\n  \"fix_suggestion\": \"Replace the line with: return gcd(b, a % b)\"\n}",
+      "fix_result": "BUG FIX:\n- Original Bug: The recursive call was using the arguments in the wrong order (gcd(a % b, b)) leading to incorrect recursion.\n- Fix Applied: Replaced the recursive call with return gcd(b, a % b) to correctly apply the Euclidean Algorithm.\n- Reasoning: The Euclidean Algorithm requires passing the smaller number (or remainder) as the first parameter, so that the next recursive call is made with the value of b and the remainder (a % b). This change ensures that the recursion progresses correctly towards the base case, preventing infinite recursion.",
+      "test_evaluation": "{\n  \"validation_passed\": true,\n  \"pass_rate\": 1.0,\n  \"total_tests\": 6,\n  \"passed_tests\": 6,\n  \"summary\": \"All tests passed successfully for the fixed version of 'gcd'.\"\n}"
+    }
+  ]
+}

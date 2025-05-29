@@ -1,0 +1,9 @@
+```json
+{
+  "line_number": 9,
+  "buggy_line": "dp[i, j] = dp[i - 1, j] + 1",
+  "bug_type": "indexing/off-by-one",
+  "explanation": "For the longest common substring problem you must extend matches diagonally (i-1, j-1), not vertically (i-1, j). Using dp[i-1, j] causes the DP to propagate along the wrong axis and yields incorrect substring lengths.",
+  "fix_suggestion": "Replace the line with:\n    dp[i, j] = dp[i - 1, j - 1] + 1"
+}
+```

@@ -1,0 +1,7 @@
+{
+    "line_number": "Line 10 (just before recursing through successors)",
+    "buggy_line": "return any(\n                search_from(nextnode) for nextnode in node.successors\n            )",
+    "bug_type": "logical error (missing visited node tracking)",
+    "explanation": "The function checks whether a node was visited to prevent infinite loops in cyclic graphs, but it never adds nodes to the 'nodesvisited' set. This means that even after visiting a node, the algorithm may visit it again, leading to infinite recursion or a RecursionError when cycles are present (as in test case 5).",
+    "fix_suggestion": "Before recursing into the successors, add a line to mark the current node as visited. For example:\n\n    def search_from(node):\n        if node in nodesvisited:\n            return False\n        nodesvisited.add(node)  # <-- Add this line\n        if node is goalnode:\n            return True\n        else:\n            return any(search_from(nextnode) for nextnode in node.successors)\n\nThis change will correctly track visited nodes and prevent revisiting nodes in cycles."
+}

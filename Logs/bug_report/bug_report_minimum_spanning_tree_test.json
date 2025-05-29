@@ -1,0 +1,9 @@
+```json
+{
+  "line_number": 14,
+  "buggy_line": "        print(edge),",
+  "bug_type": "Python3 print compatibility",
+  "explanation": "This code is using the old Python2 idiom `print edge,` (trailing comma) to suppress the newline, but in Python3 `print` is a function and a trailing comma becomes part of a tuple expression, not a suppression of the newline. As a result each edge still prints on its own line and the comma is effectively ignored.",
+  "fix_suggestion": "Use the Python3 `print` signature to control line endings. For example:\n```python\nprint(edge, end=' ')\n```  If you still want a trailing newline after the loop, call `print()` once afterward."
+}
+```

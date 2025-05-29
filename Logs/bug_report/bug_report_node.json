@@ -1,0 +1,7 @@
+{
+  "line_number": 2,
+  "buggy_line": "def __init__(self, value=None, successor=None, successors=[], predecessors=[], incoming_nodes=[], outgoing_nodes=[]):",
+  "bug_type": "Mutable default argument",
+  "explanation": "In Python, default argument expressions are evaluated once at function definition time. Using mutable objects (like lists) as defaults means every Node instance will share the same list, leading to cross-instance pollution of successors, predecessors, etc.",
+  "fix_suggestion": "Use None as the default and inside __init__ initialize a new list when needed. For example:\n\n    def __init__(self, value=None, successor=None,\n                 successors=None, predecessors=None,\n                 incoming_nodes=None, outgoing_nodes=None):\n        self.value = value\n        self.successor = successor\n        self.successors = successors if successors is not None else []\n        self.predecessors = predecessors if predecessors is not None else []\n        self.incoming_nodes = incoming_nodes if incoming_nodes is not None else []\n        self.outgoing_nodes = outgoing_nodes if outgoing_nodes is not None else []"
+}

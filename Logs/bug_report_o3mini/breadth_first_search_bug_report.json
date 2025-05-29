@@ -1,0 +1,7 @@
+{
+    "line_number": 10,
+    "buggy_line": "    while True:",
+    "bug_type": "Logic error (infinite loop / missing empty queue check)",
+    "explanation": "The loop uses 'while True:' without checking if the queue is empty. When no path exists from the start node to the goal node (for example, in test3 with two unconnected nodes), the queue will eventually become empty, and calling 'popleft()' on an empty queue will raise an IndexError instead of returning False as expected.",
+    "fix_suggestion": "Replace 'while True:' with 'while queue:' so that the loop terminates when there are no more nodes to explore. Additionally, you can remove the unreachable 'return False' after the loop; or alternatively, place it outside the while loop to handle the case when the queue is empty."
+}
